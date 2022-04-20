@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { IData } from "../type/type";
+import { IData } from "../../type/type";
 
 export function useIsOpenDropdown() {
   const [isOpenDropdown, setIsOpenDropdown] = useState<boolean>(false);

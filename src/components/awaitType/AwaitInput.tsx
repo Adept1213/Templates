@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { url } from "../constants/awaitInputConst";
-import { IData } from "../type/type";
+import { url } from "../../constants/awaitInputConst";
+import { IData } from "../../type/type";
 import Dropdown from "./Dropdown";
 import { sortData, useDebounce, useGetData, useIsOpenDropdown } from "./hooks";
 import Input from "./Input";

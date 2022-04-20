@@ -1,4 +1,5 @@
 import { separateWord } from "./hooks";
+import { Span, WrapperDropdownItem } from "./styled";
 
 const DropdownItem = ({
   id,
@@ -11,12 +12,12 @@ const DropdownItem = ({
 }) => {
   const [start, end] = separateWord(value, title);
   return (
-    <div className="dropdown__item">
+    <WrapperDropdownItem>
       id - {id}
       <br /> title - {start}
-      <span className="test">{value}</span>
+      <Span>{value}</Span>
       {end}
-    </div>
+    </WrapperDropdownItem>
   );
 };
 
