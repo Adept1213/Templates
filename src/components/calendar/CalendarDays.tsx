@@ -1,21 +1,30 @@
+import { convertForDate } from "./hooks";
 import { DaysWrapper, DayWrapper } from "./styled";
 
 const CalendarDays = ({
-  value,
+  start,
+  end,
   data,
   month,
   year,
   changeChosenDay,
 }: {
-  value: string;
+  start: string;
+  end: string;
   data: number[];
   month: string;
   year: number;
   changeChosenDay: (day: number, month: string, year: number) => void;
 }) => {
   const indexFirstDay = data.findIndex((elem) => elem === 1);
-  const isChosenDay = (day: number, value: string) =>
-    `${day} ${month} ${year}` === value;
+  const isChosenDay = (day: number, start: string, end: string) =>
+    `${day} ${month} ${year}` === start || `${day} ${month} ${year}` === end;
+  const inRange = (today: string, start: string, end: string) => {
+    const startDate = convertForDate(start);
+    const endDate = convertForDate(end);
+    const todayDate = convertForDate(today);
+    return startDate <= todayDate && todayDate <= endDate;
+  };
 
   return (
     <DaysWrapper>
@@ -27,7 +36,8 @@ const CalendarDays = ({
             isCanClick
             key={index}
             onClick={() => changeChosenDay(day, month, year)}
-            isChecked={isChosenDay(day, value)}
+            isChecked={isChosenDay(day, start, end)}
+            inRange={inRange(`${day} ${month} ${year}`, start, end)}
           >
             {day}
           </DayWrapper>

@@ -38,11 +38,26 @@ export const useGetMonth = () => {
 }
 
 export const useInputValue = () => {
-    const [value, setValue] = useState<string>("");
-    const changeChosenDay =  useCallback((day: number, month: string, year: number) => {
-        setValue(`${day} ${month} ${year}`);
-    }, [])
-    return {value, changeChosenDay}
+    const [start, setStart] = useState<string>("");
+    const [end, setEnd] = useState<string>("");
+    const changeChosenDay =  useCallback((day?: number, month?: string, year?: number) => {
+        switch (true) {
+            case !day:
+                setStart("");
+                setEnd("");
+                break;
+            case start !== "" && checkIsStartDateLater(start, `${day} ${month} ${year}`):
+                setEnd(start);
+                setStart(`${day} ${month} ${year}`);
+                break;
+            case start !== "": 
+                setEnd(`${day} ${month} ${year}`);
+                break;
+            default:
+                setStart(`${day} ${month} ${year}`);
+        }
+    }, [start])
+    return {start, end, changeChosenDay}
 }
 
 function getMonthDays(month: number, year: number): number[] {
@@ -64,4 +79,13 @@ function getMonthDays(month: number, year: number): number[] {
     };
 
     return arr;
+}
+
+function checkIsStartDateLater(first: string, second: string) {
+    return convertForDate(first) > convertForDate(second)
+}
+
+export function convertForDate (date: string) {
+    const arrDate = date.split(" ");
+    return new Date(Number(arrDate[2]), month.findIndex((elem) => elem === arrDate[1]), Number(arrDate[0]));
 }

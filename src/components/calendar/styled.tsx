@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 export const InputWithCalendarWrapper = styled.div`
@@ -14,24 +13,21 @@ export const Input = styled.input`
   padding: 5px;
 `;
 
-export const SVGWrapper = React.memo(
-  styled.div`
-    position: absolute;
-    top: 3px;
-    left: 175px;
-    cursor: pointer;
-  `,
-  () => true
-);
+export const SVGWrapper = styled.div`
+  position: absolute;
+  top: 3px;
+  left: 175px;
+  cursor: pointer;
+`;
 
-export const CalendarWrapper = React.memo(styled.div`
+export const CalendarWrapper = styled.div`
   position: absolute;
   top: 35px;
   width: 200px;
   height: 300px;
   border: 1px solid black;
   border-radius: 5px;
-`);
+`;
 
 export const MonthWrapper = styled.div`
   position: relative;
@@ -77,6 +73,7 @@ export const DayWrapper = styled.div<{
   isBold?: boolean;
   isCanClick?: boolean;
   isChecked?: boolean;
+  inRange?: boolean;
 }>`
   box-sizing: border-box;
   height: 100%;
@@ -90,6 +87,7 @@ export const DayWrapper = styled.div<{
   user-select: none;
   ${({ isCanClick }) => isCanClick && "cursor: pointer;"}
   ${({ isChecked }) => isChecked && "border: 1px solid red;"}
+  ${({ inRange }) => inRange && "background-color: tomato;"}
   border-radius: 50%;
   :hover {
     ${({ isCanClick }) => isCanClick && "background-color: lightgray;"}

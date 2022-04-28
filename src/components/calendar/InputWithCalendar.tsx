@@ -3,12 +3,13 @@ import { useInputValue } from "./hooks";
 import { InputWithCalendarWrapper, Input } from "./styled";
 
 const InputWithCalendar = () => {
-  const { value, changeChosenDay } = useInputValue();
-  console.log("render main wrapper");
+  const { start, end, changeChosenDay } = useInputValue();
+
   return (
     <InputWithCalendarWrapper>
-      <Input value={value} />
-      <Calendar value={value} changeChosenDay={changeChosenDay} />
+      <Input value={start} readOnly />
+      <Input value={end} readOnly />
+      <Calendar start={start} end={end} changeChosenDay={changeChosenDay} />
     </InputWithCalendarWrapper>
   );
 };

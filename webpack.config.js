@@ -12,7 +12,8 @@ module.exports = {
     devtool: 'inline-source-map',
     output: {
         filename: "[name].[hash].js",
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        chunkFilename: "[name].[hash].js"
     }, 
     plugins : [
         new HTMLWebpackPlugin({

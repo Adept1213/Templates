@@ -4,22 +4,32 @@ import CalendarMonth from "./CalendarMonth";
 import { useGetMonth, useOpenCloseCalendar } from "./hooks";
 import { CalendarWrapper, SVGWrapper } from "./styled";
 import CalendarDays from "./CalendarDays";
+import CloseSVG from "../../assets/CloseSVG";
 
 const Calendar = ({
-  value,
+  start,
+  end,
   changeChosenDay,
 }: {
-  value: string;
-  changeChosenDay: (day: number, month: string, year: number) => void;
+  start: string;
+  end: string;
+  changeChosenDay: (day?: number, month?: string, year?: number) => void;
 }) => {
   const { isOpenCalendar, handlerButtonCalendar } = useOpenCloseCalendar();
   const { month, year, increaseMonth, decreaseMonth, arrDays } = useGetMonth();
 
   return (
     <>
-      <SVGWrapper onClick={handlerButtonCalendar}>
-        <CalendarSVG width="20px" height="20px" />
-      </SVGWrapper>
+      {start === "" ? (
+        <SVGWrapper onClick={handlerButtonCalendar}>
+          <CalendarSVG width="20px" height="20px" />
+        </SVGWrapper>
+      ) : (
+        <SVGWrapper onClick={() => changeChosenDay()}>
+          <CloseSVG width="20px" height="20px" />
+        </SVGWrapper>
+      )}
+
       {isOpenCalendar && (
         <CalendarWrapper>
           <CalendarMonth
@@ -30,7 +40,8 @@ const Calendar = ({
           />
           <CalendarWeekDays />
           <CalendarDays
-            value={value}
+            start={start}
+            end={end}
             data={arrDays}
             month={month}
             year={year}
