@@ -1,9 +1,10 @@
 // import AwaitInput from "./components/awaitType/AwaitInput";
-import InputWithCalendar from "./components/calendar/InputWithCalendar";
+// import InputWithCalendar from "./components/calendar/InputWithCalendar";
 // import InfinityScroll from "./infinityScroll/InfinityScroll";
-// import Training from "./components/training/Training";
-// import Puzzle from "./components/puzzleGame/Puzzle";
+// import Dnd from "./components/dnd/Training";
 
-const App = () => <InputWithCalendar />;
+import Dnd from "./components/dnd/Dnd";
+
+const App = () => <Dnd />;
 
 export default App;

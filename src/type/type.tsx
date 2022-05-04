@@ -17,3 +17,19 @@ export interface SvgIconProps {
   className?: string;
   style?: CSSProperties;
 }
+
+export interface ITask {
+  id: string;
+  text: string;
+}
+export interface ITaskProps {
+  id: string;
+  text: string;
+  index: number;
+}
+
+export interface IDNDState {
+  id: string;
+  title: string;
+  tasks: ITask[];
+}

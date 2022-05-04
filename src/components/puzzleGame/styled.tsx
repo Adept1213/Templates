@@ -8,7 +8,7 @@ export const PuzzleWrapper = styled.div`
   margin: 0 auto;
 `;
 
-export const PuzzleItemStyled = styled.div<{ x: number; y: number }>`
+export const PuzzleItemStyled = styled.div<{ x?: number; y?: number }>`
   position: absolute;
   top: ${({ y }) => y + "px;"};
   left: ${({ x }) => x + "px"};

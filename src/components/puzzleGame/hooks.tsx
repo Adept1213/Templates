@@ -21,6 +21,8 @@ export function useMovePuzzle(id: string) {
   const movePuzzle = useCallback((ev: MouseEvent): void => {
     const topPosition = ev.clientY - topMargin;
     const leftPosition = ev.clientX - leftMargin;
+    setY(y);
+    setX(x);
     if (topPosition < 0) {
       setY(0);
     } else if (topPosition > 800) {

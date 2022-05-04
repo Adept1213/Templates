@@ -5,7 +5,7 @@ import { PuzzleItemStyled } from "./styled";
 const PuzzleItem = ({ id }: { id: string }) => {
   const { x, y } = useMovePuzzle(id);
   return (
-    <PuzzleItemStyled x={x} y={y} id={id}>
+    <PuzzleItemStyled id={id} x={x} y={y}>
       {Number(id) + 1}
     </PuzzleItemStyled>
   );
